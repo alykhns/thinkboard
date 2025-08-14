@@ -1,5 +1,5 @@
 import { createNote, getAllNotes } from '../controllers/notesController.js';
-import { connectDB } from '../config/db.js';
+import { connectDB } from '../src/config/db.js';
 
 export default async function handler(req, res) {
   await connectDB();
