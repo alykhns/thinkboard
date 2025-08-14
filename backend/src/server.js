@@ -12,11 +12,14 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const __dirname = path.resolve();
 
-if(process.env.NODE_ENV !== 'production') {
-    app.use(cors({
-        origin: "http://localhost:5174"
-    }));
-}
+
+const allowedOrigins = [
+    "http://localhost:5174",
+    "https://rfnotesfin.vercel.app"
+];
+app.use(cors({
+    origin: allowedOrigins
+}));
 
 app.use(express.json());
 app.use(rateLimiter)
