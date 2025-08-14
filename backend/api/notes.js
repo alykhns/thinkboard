@@ -1,5 +1,7 @@
 import { createNote, getAllNotes } from '../controllers/notesController.js';
 import { connectDB } from '../src/config/db.js';
+import dotenv from 'dotenv';
+dotenv.config();
 
 export default async function handler(req, res) {
   await connectDB();
