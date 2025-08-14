@@ -4,6 +4,15 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export default async function handler(req, res) {
+  res.setHeader("Access-Control-Allow-Origin", "https://rfnotesfin.vercel.app");
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    res.status(200).end();
+    return;
+  }
+
   await connectDB();
   if (req.method === 'GET') {
     await getAllNotes(req, res);
